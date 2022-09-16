@@ -1,9 +1,7 @@
 import { chromium } from 'playwright'
 import notifier from 'node-notifier'
 import cron from 'node-cron'
-const sendMail = require ('./sendMail');
-
-
+import { sendEmail } from './sendEmail';
 
 
 //                    ┌────────────── second (optional)
@@ -15,8 +13,8 @@ const sendMail = require ('./sendMail');
 //                    │ │ │ │ │ │
 //                    │ │ │ │ │ │
 //                    * * * * * *
-
 const FREQUENCY = '*/10 * * * * *';
+
 const MENSAJE = "La venta de pasajes a Mar del Plata, Pinamar, Bahía Blanca, Rufino / Justo Daract, Bragado / Pehuajó, Junín, Tucumán, Córdoba y Rosario se encuentra habilitada hasta el 31/10/22 inclusive";
 
 cron.schedule(FREQUENCY, async () => {
@@ -36,7 +34,7 @@ cron.schedule(FREQUENCY, async () => {
       title: "PASAJES NUEVOS",
       message: "HAY PASAJES NUEVOS!!!!!!!!!!"
     })
-    sendMail();    
+    sendEmail();    
   }
   
   await browser.close()
