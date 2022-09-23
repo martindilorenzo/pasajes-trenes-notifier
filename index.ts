@@ -36,8 +36,7 @@ cron.schedule(FREQUENCY, async () => {
       title: "PASAJES NUEVOS",
       message: "HAY PASAJES NUEVOS!!!!!!!!!!"
     })
-    console.log(cantAvisos);
-    if (cantAvisos < 3) {
+    if (cantAvisos < 1) {
       sendEmail(); 
       cantAvisos++;
     }
